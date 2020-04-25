@@ -21,7 +21,7 @@ import akshay.saurav.chandan.exploreyourplaces.services.MyInterface;
 public class ProfileFragment extends Fragment {
     private TextView name, email;
     private Button logoutBtn;
-
+    static String capturename;
     MyInterface logoutListener;
 
     public ProfileFragment() {
@@ -33,19 +33,18 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         name = view.findViewById(R.id.name);
         String Name = "Hi, " + MainActivity.appPreference.getDisplayName();
         name.setText(Name);
-
+        capturename = Name; // Capture User Name in static
         email = view.findViewById(R.id.email);
 
         String Email_cDate = MainActivity.appPreference.getDisplayEmail()
-                +"\n Registered at: " + MainActivity.appPreference.getCreDate();
+                + "\n Registered at: " + MainActivity.appPreference.getCreDate();
         email.setText(Email_cDate);
         //Log.e("created_at: ", c_date);
-
 
 
         logoutBtn = view.findViewById(R.id.logoutBtn);
