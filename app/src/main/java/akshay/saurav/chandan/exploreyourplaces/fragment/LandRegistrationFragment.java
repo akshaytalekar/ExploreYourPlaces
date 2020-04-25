@@ -25,7 +25,6 @@ import retrofit2.Response;
 public class LandRegistrationFragment extends Fragment {
 
     private EditText nameInput, emailInput, phoneInput, passwordInput;
-    Button regBtn;
 
     public LandRegistrationFragment() {
         // Required empty public constructor
@@ -35,8 +34,9 @@ public class LandRegistrationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Button regBtn;
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_landreg, container, false);
+        View view = inflater.inflate(R.layout.fragment_landreg, container, false);
         nameInput = view.findViewById(R.id.landeditName);
         emailInput = view.findViewById(R.id.landeditEmail);
         phoneInput = view.findViewById(R.id.landeditMobile);
@@ -59,33 +59,38 @@ public class LandRegistrationFragment extends Fragment {
         String phone = phoneInput.getText().toString();
         String password = passwordInput.getText().toString();
 
-        if (TextUtils.isEmpty(name)){
+        if (TextUtils.isEmpty(name)) {
             MainActivity.appPreference.showToast("Your name is required.");
-        } else if (TextUtils.isEmpty(email)){
+        } else if (TextUtils.isEmpty(email)) {
             MainActivity.appPreference.showToast("Your email is required.");
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             MainActivity.appPreference.showToast("Invalid email");
-        } else if (TextUtils.isEmpty(password)){
+        } else if (TextUtils.isEmpty(password)) {
             MainActivity.appPreference.showToast("Password required");
-        } else if (password.length() < 6){
+        } else if (password.length() < 6) {
             MainActivity.appPreference.showToast("Create a password at least 6 characters long.");
-        }
-        else {
+        } else {
             Call<User> userCall = MainActivity.serviceApiL.doRegistration(name, email, phone, password);
             userCall.enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
-                    if (response.body().getResponse().equals("inserted")){
-                        Log.e("response", response.body().getResponse());
-                        nameInput.setText("");
-                        emailInput.setText("");
-                        phoneInput.setText("");
-                        passwordInput.setText("");
-                        MainActivity.appPreference.showToast("Registered Successfully");
-                    } else if (response.body().getResponse().equals("exists")){
-                        MainActivity.appPreference.showToast("This email already exists");
-                    } else if (response.body().getResponse().equals("error")){
-                        MainActivity.appPreference.showToast("Oops! something went wrong.");
+                    if (response.body() != null) {
+                        switch (response.body().getResponse()) {
+                            case "inserted":
+                                Log.e("response", response.body().getResponse());
+                                nameInput.setText("");
+                                emailInput.setText("");
+                                phoneInput.setText("");
+                                passwordInput.setText("");
+                                MainActivity.appPreference.showToast("Registered Successfully");
+                                break;
+                            case "exists":
+                                MainActivity.appPreference.showToast("This email already exists");
+                                break;
+                            case "error":
+                                MainActivity.appPreference.showToast("Oops! something went wrong.");
+                                break;
+                        }
                     }
                 }
 

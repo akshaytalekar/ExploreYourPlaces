@@ -10,12 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-
-
-
 import akshay.saurav.chandan.exploreyourplaces.MainActivity;
 import akshay.saurav.chandan.exploreyourplaces.R;
 import akshay.saurav.chandan.exploreyourplaces.model.UserTenent;
@@ -26,7 +22,7 @@ import retrofit2.Response;
 public class TenRegistrationFragment extends Fragment {
 
     private EditText nameInput, emailInput, phoneInput, passwordInput;
-    Button regBtn;
+
 
     public TenRegistrationFragment() {
         // Required empty public constructor
@@ -36,6 +32,7 @@ public class TenRegistrationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Button regBtn;
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_tenreg, container, false);
         nameInput = view.findViewById(R.id.tenenteditName);
@@ -53,7 +50,7 @@ public class TenRegistrationFragment extends Fragment {
         return view;
     }
 
-    public void registerUser() {
+    private void registerUser() {
         String name = nameInput.getText().toString();
         String email = emailInput.getText().toString();
         String phone = phoneInput.getText().toString();
@@ -74,27 +71,32 @@ public class TenRegistrationFragment extends Fragment {
             Call<UserTenent> userTenentCall = MainActivity.serviceApiT.doRegistration(name, email, phone, password);
             userTenentCall.enqueue(new Callback<UserTenent>() {
                 @Override
-                public void onResponse(Call<UserTenent> call, Response<UserTenent> response) {
-                    if (response.body().getResponse().equals("inserted")){
-                        Log.e("response", response.body().getResponse());
-                        nameInput.setText("");
-                        emailInput.setText("");
-                        phoneInput.setText("");
-                        passwordInput.setText("");
-                        MainActivity.appPreference.showToast("Registered Successfully");
-                    } else if (response.body().getResponse().equals("exists")){
-                        MainActivity.appPreference.showToast("This email already exists");
-                    } else if (response.body().getResponse().equals("error")){
-                        MainActivity.appPreference.showToast("Oops! something went wrong.");
+                public void onResponse(Call<UserTenent> call, Response<UserTenent> response)
+                {
+                    if (response.body() != null) {
+                        switch (response.body().getResponse()) {
+                            case "inserted":
+                                Log.e("response", response.body().getResponse());
+                                nameInput.setText("");
+                                emailInput.setText("");
+                                phoneInput.setText("");
+                                passwordInput.setText("");
+                                MainActivity.appPreference.showToast("Registered Successfully");
+
+                                break;
+                            case "exists":
+                                MainActivity.appPreference.showToast("This email already exists");
+                                break;
+                            case "error":
+                                MainActivity.appPreference.showToast("Oops! something went wrong.");
+                                break;
+                        }
                     }
                 }
-
                 @Override
                 public void onFailure(Call<UserTenent> call, Throwable t) {
                 }
             });
         }
-
     }
-
 }
