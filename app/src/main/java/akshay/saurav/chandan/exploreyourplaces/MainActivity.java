@@ -14,6 +14,7 @@ import akshay.saurav.chandan.exploreyourplaces.services.MyInterface;
 import akshay.saurav.chandan.exploreyourplaces.services.RetrofitClient;
 import akshay.saurav.chandan.exploreyourplaces.services.ServiceApiCRR;
 import akshay.saurav.chandan.exploreyourplaces.services.ServiceApiL;
+import akshay.saurav.chandan.exploreyourplaces.services.ServiceApiMP;
 import akshay.saurav.chandan.exploreyourplaces.services.ServiceApiT;
 import akshay.saurav.chandan.exploreyourplaces.ui.home.HomeFragment;
 
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements MyInterface {
     public static ServiceApiL serviceApiL;
     public static ServiceApiT serviceApiT;
     public static ServiceApiCRR serviceApiCRR;
+    public static ServiceApiMP serviceApiMP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements MyInterface {
         serviceApiL = RetrofitClient.getApiClient(Constant.baseUrl.BASE_URL).create(ServiceApiL.class);
         serviceApiT = RetrofitClient.getApiClient(Constant.baseUrl.BASE_URL).create(ServiceApiT.class);
         serviceApiCRR = RetrofitClient.getApiClient(Constant.baseUrl.BASE_URL).create(ServiceApiCRR.class);
+        serviceApiMP = RetrofitClient.getApiClient(Constant.baseUrl.BASE_URL).create(ServiceApiMP.class);
 
 
         if (container_layout != null) {

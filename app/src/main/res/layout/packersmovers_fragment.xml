@@ -24,7 +24,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/client_name"
+            android:id="@+id/pm_client_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Client's Name"
@@ -33,7 +33,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/client_name_edit"
+            android:id="@+id/pm_edclient_name"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:textSize="20sp"
@@ -42,7 +42,7 @@
             android:hint="  Enter Client's Name" />
 
         <TextView
-            android:id="@+id/client_phone"
+            android:id="@+id/pm_client_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Client's Phone"
@@ -51,7 +51,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/client_phone_edit"
+            android:id="@+id/pm_edclient_phone"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:textSize="20sp"
@@ -62,7 +62,7 @@
             android:hint="  Enter Client's Phone" />
 
         <TextView
-            android:id="@+id/city"
+            android:id="@+id/pm_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="City"
@@ -71,7 +71,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/city_edit"
+            android:id="@+id/pm_edcity"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:textSize="20sp"
@@ -82,7 +82,7 @@
             />
 
         <TextView
-            android:id="@+id/moving_From"
+            android:id="@+id/pm_moving_From"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -91,7 +91,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/moving_from_edit"
+            android:id="@+id/pm_edmoving_from"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:textSize="20sp"
@@ -101,7 +101,7 @@
             android:hint="  Select Nearest Landmark" />
 
         <TextView
-            android:id="@+id/Mmving_to"
+            android:id="@+id/pm_mving_to"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Moving To"
@@ -110,7 +110,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/moving_to_edit"
+            android:id="@+id/pm_edmoving_to"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:textSize="20sp"
@@ -124,7 +124,7 @@
         android:layout_weight="1"
         android:layout_height="match_parent">
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/pm_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAllCaps="false"
