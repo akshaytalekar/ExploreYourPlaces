@@ -12,6 +12,7 @@ import akshay.saurav.chandan.exploreyourplaces.fragment.LoginFragment;
 import akshay.saurav.chandan.exploreyourplaces.fragment.TenRegistrationFragment;
 import akshay.saurav.chandan.exploreyourplaces.services.MyInterface;
 import akshay.saurav.chandan.exploreyourplaces.services.RetrofitClient;
+import akshay.saurav.chandan.exploreyourplaces.services.ServiceApiCRR;
 import akshay.saurav.chandan.exploreyourplaces.services.ServiceApiL;
 import akshay.saurav.chandan.exploreyourplaces.services.ServiceApiT;
 import akshay.saurav.chandan.exploreyourplaces.ui.home.HomeFragment;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements MyInterface {
     FrameLayout container_layout;
     public static ServiceApiL serviceApiL;
     public static ServiceApiT serviceApiT;
+    public static ServiceApiCRR serviceApiCRR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements MyInterface {
 
         serviceApiL = RetrofitClient.getApiClient(Constant.baseUrl.BASE_URL).create(ServiceApiL.class);
         serviceApiT = RetrofitClient.getApiClient(Constant.baseUrl.BASE_URL).create(ServiceApiT.class);
+        serviceApiCRR = RetrofitClient.getApiClient(Constant.baseUrl.BASE_URL).create(ServiceApiCRR.class);
 
 
         if (container_layout != null) {
@@ -104,4 +107,5 @@ public class MainActivity extends AppCompatActivity implements MyInterface {
                 .commit();
 
     }
+
 }
