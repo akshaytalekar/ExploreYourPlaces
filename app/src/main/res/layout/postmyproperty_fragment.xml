@@ -26,7 +26,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/client_name"
+            android:id="@+id/prop_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Property Type"
@@ -35,7 +35,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/client_name_edit"
+            android:id="@+id/pp_prop_type"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:textSize="20sp"
@@ -44,7 +44,7 @@
             android:hint="  Select" />
 
         <TextView
-            android:id="@+id/client_phone"
+            android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Expected Price"
@@ -53,7 +53,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/client_phone_edit"
+            android:id="@+id/pp_price"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:textSize="20sp"
@@ -64,7 +64,7 @@
             android:hint="  Add Price" />
 
         <TextView
-            android:id="@+id/city"
+            android:id="@+id/location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Location"
@@ -73,7 +73,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/city_edit"
+            android:id="@+id/pp_location"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:textSize="20sp"
@@ -84,7 +84,7 @@
             />
 
         <TextView
-            android:id="@+id/moving_From"
+            android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -93,7 +93,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/moving_from_edit"
+            android:id="@+id/pp_description"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:textSize="20sp"
@@ -111,17 +111,25 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+           <!-- <TextView
                 android:id="@+id/Mmving_to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Upload Property Photo"
                 android:padding="10dp"
                 android:textColor="#044E47"
-                android:textSize="20sp" />
+                android:textSize="20sp" />-->
+            <ImageView
+                android:id="@+id/pp_preview"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background" />
+
 
             <Button
-                android:id="@+id/button17"
+                android:id="@+id/pp_browse"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/corner1"
@@ -129,24 +137,7 @@
                 android:text="Browse" />
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
-           >
 
-
-            <Button
-                android:id="@+id/button18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAllCaps="false"
-                android:background="@drawable/corner1"
-                android:layout_weight="1"
-                android:text="Upload" />
-        </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
@@ -159,7 +150,7 @@
 
 
     <Button
-        android:id="@+id/button19"
+        android:id="@+id/pp_submit"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
