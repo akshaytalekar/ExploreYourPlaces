@@ -19,6 +19,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static akshay.saurav.chandan.exploreyourplaces.MainActivity.appPreference;
+
 public class TenRegistrationFragment extends Fragment {
 
     private EditText nameInput, emailInput, phoneInput, passwordInput;
@@ -54,18 +56,19 @@ public class TenRegistrationFragment extends Fragment {
         String name = nameInput.getText().toString();
         String email = emailInput.getText().toString();
         String phone = phoneInput.getText().toString();
+        appPreference.setDisplayPhone(phone);
         String password = passwordInput.getText().toString();
 
         if (TextUtils.isEmpty(name)){
-            MainActivity.appPreference.showToast("Your name is required.");
+            appPreference.showToast("Your name is required.");
         } else if (TextUtils.isEmpty(email)){
-            MainActivity.appPreference.showToast("Your email is required.");
+            appPreference.showToast("Your email is required.");
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            MainActivity.appPreference.showToast("Invalid email");
+            appPreference.showToast("Invalid email");
         } else if (TextUtils.isEmpty(password)){
-            MainActivity.appPreference.showToast("Password required");
+            appPreference.showToast("Password required");
         } else if (password.length() < 6){
-            MainActivity.appPreference.showToast("Create a password at least 6 characters long.");
+            appPreference.showToast("Create a password at least 6 characters long.");
         }
         else {
             Call<UserTenent> userTenentCall = MainActivity.serviceApiT.doRegistration(name, email, phone, password);
@@ -81,14 +84,14 @@ public class TenRegistrationFragment extends Fragment {
                                 emailInput.setText("");
                                 phoneInput.setText("");
                                 passwordInput.setText("");
-                                MainActivity.appPreference.showToast("Registered Successfully");
+                                appPreference.showToast("Registered Successfully");
 
                                 break;
                             case "exists":
-                                MainActivity.appPreference.showToast("This email already exists");
+                                appPreference.showToast("This email already exists");
                                 break;
                             case "error":
-                                MainActivity.appPreference.showToast("Oops! something went wrong.");
+                                appPreference.showToast("Oops! something went wrong.");
                                 break;
                         }
                     }
