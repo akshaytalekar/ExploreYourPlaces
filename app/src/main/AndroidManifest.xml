@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".CotBasis"></activity>
+        <activity android:name=".CotBasis"/>
         <activity android:name=".Bunglow" />
         <activity android:name=".RK" />
         <activity android:name=".BHK" />

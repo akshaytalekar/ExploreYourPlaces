@@ -15,7 +15,7 @@ public class Logout extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        MyInterface logoutfun = null;
+        MyInterface logoutfun=null;
         logoutfun.logout();
         return super.onCreateView(inflater, container, savedInstanceState);
     }
