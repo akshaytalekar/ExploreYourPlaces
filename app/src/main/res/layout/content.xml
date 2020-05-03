@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="160dp"
-    android:layout_height="190dp"
+    android:layout_height="160dp"
     android:layout_margin="10dp"
     android:layout_marginTop="10dp"
     app:cardBackgroundColor="@color/colorPrimaryDark"
@@ -37,32 +37,14 @@
         <TextView
             android:id="@+id/tv1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:layout_marginBottom="5sp"
             android:layout_marginTop="5sp"
             android:layout_marginLeft="15dp"
             android:textColor="#3F704D"
             android:text="title" />
 
-        <TextView
-            android:id="@+id/tv2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5sp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5sp"
-            android:textColor="#3F704D"
-            android:text="Rate" />
-
-        <TextView
-            android:id="@+id/tv3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5sp"
-            android:textColor="#3F704D"
-            android:layout_marginLeft="15dp"
-            android:layout_marginBottom="5sp"
-            android:text="location" />
 
 
     </LinearLayout>

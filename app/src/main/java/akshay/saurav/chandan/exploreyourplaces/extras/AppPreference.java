@@ -39,7 +39,14 @@ public class AppPreference {
     public String getDisplayName(){
         return sharedPreferences.getString(String.valueOf(R.string.s_pref_name), "Name");
     }
-
+//for phone
+public void setDisplayPhone(String phone){
+    editor.putString(String.valueOf(R.string.s_pref_name), phone);
+    editor.commit();
+}
+    public String getDisplayPhone(){
+        return sharedPreferences.getString(String.valueOf(R.string.s_pref_name), "Phone");
+    }
     //For email
     public void setDisplayEmail(String email){
         editor.putString(String.valueOf(R.string.s_pref_email), email);

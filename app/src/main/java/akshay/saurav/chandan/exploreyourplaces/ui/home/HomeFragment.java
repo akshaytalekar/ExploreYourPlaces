@@ -165,11 +165,15 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
 
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -177,26 +181,74 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import akshay.saurav.chandan.exploreyourplaces.BHK;
+import akshay.saurav.chandan.exploreyourplaces.Bunglow;
+import akshay.saurav.chandan.exploreyourplaces.CotBasis;
+import akshay.saurav.chandan.exploreyourplaces.MainActivity;
 import akshay.saurav.chandan.exploreyourplaces.R;
+import akshay.saurav.chandan.exploreyourplaces.RK;
+import akshay.saurav.chandan.exploreyourplaces.ui.Pay_Rent.payrent;
 
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
+    GridView gridView;
+    String [] homeWord={"RK","BHK","Bunglow","Cot Basis"};
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+
+    int [] homeImage={R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.four,R.drawable.five};
+
+
+    public static HomeFragment newInstance() {
+        return new HomeFragment();
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view= inflater.inflate(R.layout.fragment_home, container, false);
+
+        gridView= view.findViewById(R.id.gridView);
+        MyAdaptor adaptor=new MyAdaptor(getContext(),homeImage,homeWord);
+        gridView.setAdapter(adaptor);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getContext(),"You clicked"+homeWord[+position],Toast.LENGTH_SHORT).show();
+                switch (position){
+                    case 0:
+
+                        Intent rkintent=new Intent(getContext(), RK.class);
+                        startActivity(rkintent);
+                        break;
+
+                    case 1:
+                        Intent bhkintent=new Intent(getContext(), BHK.class);
+                        startActivity(bhkintent);
+                        break;
+
+                    case 2:
+                        Intent bunglowintent=new Intent(getContext(), Bunglow.class);
+                        startActivity(bunglowintent);
+                        break;
+
+
+                    case 3:
+                        Intent cotintent=new Intent(getContext(), CotBasis.class);
+                        startActivity(cotintent);
+                        break;
+
+                }
             }
         });
-        return root;
+
+
+
+        return view;
     }
+
+
 }
 

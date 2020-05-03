@@ -22,6 +22,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static akshay.saurav.chandan.exploreyourplaces.MainActivity.appPreference;
+
 public class LandRegistrationFragment extends Fragment {
 
     private EditText nameInput, emailInput, phoneInput, passwordInput;
@@ -57,6 +59,7 @@ public class LandRegistrationFragment extends Fragment {
         String name = nameInput.getText().toString();
         String email = emailInput.getText().toString();
         String phone = phoneInput.getText().toString();
+        appPreference.setDisplayPhone(phone);
         String password = passwordInput.getText().toString();
 
         if (TextUtils.isEmpty(name)) {
